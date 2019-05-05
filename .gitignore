@@ -1,0 +1,34 @@
+_ReSharper.*/
+*resharper.user
+.idea/
+[Bb]in/
+[Oo]bj/
+*.sln.cache
+*.suo
+*.sln.docstates
+*.user
+*.DotSettings
+launchSettings.json
+[Dd]ebug/
+[Rr]elease/
+*.un~
+NEW_VERSION
+project.lock.json
+packages
+build
+temp
+dist
+.bundle
+xmldocs/
+
+[Ww]eb.config
+[Aa]pp.config
+
+# VS Code
+.vs
+.vscode/
+# merge tool
+*.orig
+.DS_Store
+
+/data
