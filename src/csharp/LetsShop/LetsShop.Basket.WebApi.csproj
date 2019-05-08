@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LetsShop.Basket.Services\LetsShop.Basket.Services.csproj" />
+    <ProjectReference Include="..\LetsShop.Common\LetsShop.Common.csproj" />
   </ItemGroup>
 
 </Project>

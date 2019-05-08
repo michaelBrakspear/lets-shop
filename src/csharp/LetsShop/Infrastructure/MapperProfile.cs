@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using LetsShop.Basket.Domain.Entities;
-using LetsShop.Basket.WebApi.DTOs;
+using LetsShop.Common.DTOs;
 
 namespace LetsShop.Basket.WebApi.Infrastructure
 {

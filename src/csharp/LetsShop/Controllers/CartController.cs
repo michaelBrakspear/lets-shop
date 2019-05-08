@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using LetsShop.Basket.Domain.Entities;
-using LetsShop.Basket.Domain.Exceptions;
 using LetsShop.Basket.Services;
-using LetsShop.Basket.WebApi.DTOs;
+using LetsShop.Common.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
