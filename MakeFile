@@ -1,24 +1,7 @@
-IMAGE_NAME := lets-shop
-BUILD_IMAGE := mcr.microsoft.com/dotnet/core/sdk:2.1
-VERSION := 1
-BUILD_PATH := /opt/workspace/tmp/build
-NUGET_SOURCES := --source https://api.nuget.org/v3/index.json
-PROJECT_URI := https://github.com/michaelBrakspear/lets-shop
-BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-BUILD_URI := $(shell echo $${BUILD_URL:-$${PWD}})
-COMMIT := $(shell git rev-parse HEAD)
-WRKDIR ?= $(CURDIR)
-
-# need .PHONY, otherwise make will not rebuild
-.PHONY: compile build clean version test codegen
-
-version:
-	@echo $(VERSION)
-
 run: build
 	dotnet run -p src/csharp/LetsShop/LetsShop.Basket.WebApi.csproj
 	
-test:  
+test: 
 	dotnet test src/test/LetsShop.Basket.Domain.Tests/LetsShop.Basket.Domain.Tests.csproj
 	
 build:
