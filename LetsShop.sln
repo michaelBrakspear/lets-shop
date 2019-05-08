@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.WebApi", "LetsShop\LetsShop.Basket.WebApi.csproj", "{393490D1-529A-412D-8516-A745A1A05DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.WebApi", "src\csharp\LetsShop\LetsShop.Basket.WebApi.csproj", "{393490D1-529A-412D-8516-A745A1A05DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LetsShop.Basket.Services", "LetsShop.Basket.Services\LetsShop.Basket.Services.csproj", "{2E827C0F-502B-4A20-BF6C-8B2242B9D0A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.Services", "src\csharp\LetsShop.Basket.Services\LetsShop.Basket.Services.csproj", "{2E827C0F-502B-4A20-BF6C-8B2242B9D0A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.Domain", "src\csharp\LetsShop.Basket.Doman\LetsShop.Basket.Domain.csproj", "{D66B4DB0-9035-40BD-BC37-DCB1E723C4DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{56952D57-8E9F-4403-A8C5-0219A4AE5592}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.Domain.IntegrationTests", "src\test\LetsShop.Basket.Domain.IntegrationTests\LetsShop.Basket.Domain.IntegrationTests.csproj", "{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LetsShop.Basket.Domain.Tests", "src\test\LetsShop.Basket.Domain.Tests\LetsShop.Basket.Domain.Tests.csproj", "{6F1DF024-3919-4DFB-B167-D21AD3AD3C06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +29,25 @@ Global
 		{2E827C0F-502B-4A20-BF6C-8B2242B9D0A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E827C0F-502B-4A20-BF6C-8B2242B9D0A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E827C0F-502B-4A20-BF6C-8B2242B9D0A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66B4DB0-9035-40BD-BC37-DCB1E723C4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66B4DB0-9035-40BD-BC37-DCB1E723C4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66B4DB0-9035-40BD-BC37-DCB1E723C4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D66B4DB0-9035-40BD-BC37-DCB1E723C4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F1DF024-3919-4DFB-B167-D21AD3AD3C06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F1DF024-3919-4DFB-B167-D21AD3AD3C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F1DF024-3919-4DFB-B167-D21AD3AD3C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F1DF024-3919-4DFB-B167-D21AD3AD3C06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C50D9B4-FFA0-46C4-B887-9CD2EBA115FE} = {56952D57-8E9F-4403-A8C5-0219A4AE5592}
+		{6F1DF024-3919-4DFB-B167-D21AD3AD3C06} = {56952D57-8E9F-4403-A8C5-0219A4AE5592}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58E747E2-61A0-4E27-BCD8-7DFF3A4E4DB4}

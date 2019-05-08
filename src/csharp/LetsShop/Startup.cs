@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using LetsShop.Basket.Domain.Entities;
+using LetsShop.Basket.Domain.Repositories;
+using LetsShop.Basket.Services;
+using LetsShop.Basket.WebApi.Infrastructure;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -35,8 +40,18 @@ namespace LetsShop.Basket.WebApi
                 }
             };
 
+            var mappingConfig = new MapperConfiguration(x =>
+            {
+                x.AddProfile(new MapperProfile());
+            });
+
+            var mapper = mappingConfig.CreateMapper();
+
             services.AddSwaggerGen(options => { options.SwaggerDoc("v1", info); });
-            
+            services.AddTransient<ICartService, CartService>();
+            services.AddSingleton<IRepository<Cart>>(new InMemoryCartRepository());
+            services.AddSingleton(mapper);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +74,7 @@ namespace LetsShop.Basket.WebApi
             });
 
             app.UseHttpsRedirection();
+            app.UseMiddleware(typeof(ExceptionHandlerMiddleware));
             app.UseMvc();
         }
     }
