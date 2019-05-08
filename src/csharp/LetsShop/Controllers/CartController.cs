@@ -24,10 +24,13 @@ namespace LetsShop.Basket.WebApi.Controllers
         }
 
         [HttpGet("{id}", Name = nameof(GetCart))]
+        [ProducesResponseType(typeof(CartDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetCart(Guid id)
         {
             var cart = await _cartService.GetCartAsync(id);
-            return Ok(_mapper.Map<CartDto>(cart));
+            var cartDto = CreateLinksForUser(_mapper.Map<CartDto>(cart));
+            return Ok(cartDto);
         }
 
         [HttpPost(Name = nameof(CreateCart))]
@@ -40,6 +43,9 @@ namespace LetsShop.Basket.WebApi.Controllers
         }
 
         [HttpPut("{id}", Name = nameof(AddToCart))]
+        [ProducesResponseType(typeof(CartDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> AddToCart(Guid id, [FromBody] ProductDto productDto)
         {
             if (productDto?.Quantity == 0)
@@ -52,18 +58,18 @@ namespace LetsShop.Basket.WebApi.Controllers
         }
 
         [HttpPatch("{id}", Name = nameof(UpdateCartItem))]
+        [ProducesResponseType(typeof(CartDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateCartItem(Guid id, [FromBody] ProductDto product)
         {
-            if (product == null)
-            {
-                return BadRequest();
-            }
-
             var updatedCart = await _cartService.UpdateProductInCartAsync(id, _mapper.Map<Product>(product));
             return Ok(updatedCart);
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteCart))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteCart(Guid id)
         {
             await _cartService.DeleteCartAsync(id);
@@ -71,6 +77,8 @@ namespace LetsShop.Basket.WebApi.Controllers
         }
 
         [HttpDelete("{id}/items/{productId}", Name = nameof(DeleteCartItem))]
+        [ProducesResponseType(typeof(CartDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteCartItem(Guid id, Guid productId)
         {
             var cart = await _cartService.DeleteProductAsync(id, productId);
@@ -78,6 +86,8 @@ namespace LetsShop.Basket.WebApi.Controllers
         }
 
         [HttpDelete("{id}/items", Name = nameof(DeleteCartItems))]
+        [ProducesResponseType(typeof(CartDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteCartItems(Guid id)
         {
             var cart = await _cartService.DeleteProductsAsync(id);
