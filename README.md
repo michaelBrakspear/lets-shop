@@ -11,12 +11,17 @@ A simple hosted API that stores items in a cart
 
 ### Building
 
-The MakeFile has a few simple commands to build, test and run.
+The MakeFile has a few simple commands to build, test and run.   
+
+To compile the solution, run the command   
+```$ make build```
+
+### Running the API
 
 From the root, run the command  
 ``` $ make build-test-run ```  
 to:  
-- build the project, 
+- build the solution, 
 - run the unit tests,
 - run the integration tests,
 - launch the API
@@ -27,14 +32,18 @@ Navigate to https://localhost:44317/api/ready and you should see the date and ti
 
 Alternatively: Good old F5
 
-### The API
+# The API
 Take a look at [Swagger] (https://localhost:44317/swagger/index.html) to see the available API operations.  
 
 If you prefer postman, import the [Postman Collection](https://github.com/michaelBrakspear/lets-shop/blob/master/Cart.postman_collection.json)
 
-# Note
+### Note
 Currently there is only a cart controller - therefore the consumer can decide the product id, price and quantity. 
 
-### Next Steps
+# The Client 
+A simple library to use to interact with the API, see the LetsShop.Demo project for a guide.
+
+# Next Steps
 - Implement a product controller with a corresponding product repository to keep track of inventory, stock levels and pricing.
 - Logging - Use [Serilog](https://serilog.net/)
+
