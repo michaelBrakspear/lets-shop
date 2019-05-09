@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "0f5c4f9b-c35f-4af1-8686-b53e7ffb76c1",
+		"name": "Cart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST - Create an empty cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json+hateoas",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}"
+				},
+				"url": {
+					"raw": "https://localhost:44317/api/cart",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44317",
+					"path": [
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT - Add Item to Cart",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json+hateoas",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"00000000-0000-0000-0000-000000000001\",\"name\":\"MyItem1\",\"price\":3.00,\"Quantity\":1}"
+				},
+				"url": {
+					"raw": "https://localhost:44317/api/cart/{PutCartIdHere}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44317",
+					"path": [
+						"api",
+						"cart",
+						"{PutCartIdHere}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET - Get Cart",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json+hateoas",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44317/api/cart/{PutCartIdHere}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44317",
+					"path": [
+						"api",
+						"cart",
+						"{PutCartIdHere}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH - Update Cart Item",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json+hateoas",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"00000000-0000-0000-0000-000000000001\",\"Quantity\":12}"
+				},
+				"url": {
+					"raw": "https://localhost:44317/api/cart/{PutCartIdHere}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44317",
+					"path": [
+						"api",
+						"cart",
+						"{PutCartIdHere}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE - Delete Cart",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json+hateoas",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44317/api/cart/{PutCartIdHere}",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44317",
+					"path": [
+						"api",
+						"cart",
+						"{PutCartIdHere}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

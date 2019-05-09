@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LetsShop.Basket.Domain.IntegrationTests;
+using LetsShop.Common;
 using LetsShop.Common.DTOs;
 using Xunit;
 
@@ -18,24 +19,10 @@ namespace LetsShop.Basket.IntegrationTests
         }
 
         [Fact]
-        public async Task PUT_ReturnsBadRequestIfNullProduct()
-        {
-            // arrange
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Put);
-            request.SetContent(new object());
-
-            // act
-            var result = await _fixture.Client.SendAsync(request);
-
-            // assert
-            Assert.Equal(HttpStatusCode.BadRequest, result.StatusCode);
-        }
-
-        [Fact]
         public async Task PUT_ReturnsBadRequestIfQuantityIsZero()
         {
             // arrange
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Put);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Put);
             request.SetContent(new ProductDto{Id = Guid.NewGuid(), Quantity = 0});
 
             // act
@@ -50,7 +37,7 @@ namespace LetsShop.Basket.IntegrationTests
         public async Task PUT_ReturnsNotFoundIfCartNotBeenCreated()
         {
             // arrange
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Put);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Put);
             request.SetContent(new ProductDto { Id = Guid.NewGuid(), Quantity = 10 });
 
             // act
@@ -68,7 +55,7 @@ namespace LetsShop.Basket.IntegrationTests
             var product = ProductDto.NewProduct();
             await _fixture.Client.CreateNewCartAsync(cart);
 
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Put);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Put);
             request.SetContent(product);
 
             // act

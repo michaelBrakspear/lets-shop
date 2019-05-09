@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LetsShop.Basket.Domain.IntegrationTests;
+using LetsShop.Common;
 using LetsShop.Common.DTOs;
 using Xunit;
 
@@ -21,7 +22,7 @@ namespace LetsShop.Basket.IntegrationTests
         public async Task PATCH_NotFoundIfCartDoesNotExist()
         {
             // arrange
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Patch);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, Guid.NewGuid(), HttpMethod.Patch);
             request.SetContent(ProductDto.NewProduct());
 
             // act
@@ -38,7 +39,7 @@ namespace LetsShop.Basket.IntegrationTests
             var cart = CartDto.NewCart();
             await _fixture.Client.CreateNewCartAsync(cart);
 
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Patch);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Patch);
             request.SetContent(new ProductDto { Id = Guid.NewGuid(), Quantity = 10 });
 
             // act
@@ -58,7 +59,7 @@ namespace LetsShop.Basket.IntegrationTests
             product.Quantity = 10;
             await _fixture.Client.CreateNewCartAsync(cart);
 
-            var request = TestHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Patch);
+            var request = HttpHelper.ConstructRequestWithId(_fixture.Client.BaseAddress, cart.Id, HttpMethod.Patch);
             request.SetContent(product);
 
             // act

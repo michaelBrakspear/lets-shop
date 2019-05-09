@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LetsShop.Basket.Domain.IntegrationTests;
+using LetsShop.Common;
 using LetsShop.Common.DTOs;
 using Xunit;
 
@@ -21,7 +22,7 @@ namespace LetsShop.Basket.IntegrationTests
         public async Task DELETE_CartItems_ReturnsNotFoundIfCartDoesNotExist()
         {
             // arrange
-            var request = TestHelper.ConstructDeleteRequestForItems(_fixture.Client.BaseAddress, Guid.NewGuid());
+            var request = HttpHelper.ConstructDeleteRequestForItems(_fixture.Client.BaseAddress, Guid.NewGuid());
 
             // act
             var result = await _fixture.Client.SendAsync(request);
@@ -43,7 +44,7 @@ namespace LetsShop.Basket.IntegrationTests
             cart.Products.Add(product3);
             await _fixture.Client.CreateNewCartAsync(cart);
 
-            var request = TestHelper.ConstructDeleteRequestForItems(_fixture.Client.BaseAddress, cart.Id);
+            var request = HttpHelper.ConstructDeleteRequestForItems(_fixture.Client.BaseAddress, cart.Id);
 
             // act
             var response = await _fixture.Client.SendAsync(request);

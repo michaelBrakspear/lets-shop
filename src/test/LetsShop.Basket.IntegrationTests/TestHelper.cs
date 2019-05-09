@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace LetsShop.Basket.IntegrationTests
 {
-    internal static class TestHelper
+    internal static class sTestHelper
     {
         internal static HttpRequestMessage ConstructPost(Uri baseAddress)
         {

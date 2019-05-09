@@ -64,7 +64,7 @@ namespace LetsShop.Basket.WebApi.Controllers
         public async Task<IActionResult> UpdateCartItem(Guid id, [FromBody] ProductDto product)
         {
             var updatedCart = await _cartService.UpdateProductInCartAsync(id, _mapper.Map<Product>(product));
-            return Ok(updatedCart);
+            return Ok(_mapper.Map<CartDto>(updatedCart));
         }
 
         [HttpDelete("{id}", Name = nameof(DeleteCart))]

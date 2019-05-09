@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LetsShop.Basket.Domain.IntegrationTests;
+using LetsShop.Common;
 using LetsShop.Common.DTOs;
 using Xunit;
 
@@ -21,8 +22,7 @@ namespace LetsShop.Basket.IntegrationTests
         public async Task POST_WithEmptyBodyCreatesCart()
         {
             // arrange
-            var request = TestHelper.ConstructPost(_fixture.Client.BaseAddress);
-            request.SetContent(new object());
+            var request = HttpHelper.ConstructPost(_fixture.Client.BaseAddress, new object());
 
             // act
             var result = await _fixture.Client.SendAsync(request);
@@ -39,8 +39,7 @@ namespace LetsShop.Basket.IntegrationTests
         {
             // arrange
             var cart = CartDto.NewCart();
-            var request = TestHelper.ConstructPost(_fixture.Client.BaseAddress);
-            request.SetContent(cart);
+            var request = HttpHelper.ConstructPost(_fixture.Client.BaseAddress, cart);
 
             // act
             var response = await _fixture.Client.SendAsync(request);

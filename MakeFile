@@ -3,6 +3,7 @@ run: build
 	
 unit-tests: 
 	dotnet test src/test/LetsShop.Basket.Domain.Tests/LetsShop.Basket.Domain.Tests.csproj
+	dotnet test src/test/LetsShop.Client.Tests/LetsShop.Client.Tests.csproj
 	
 integration-tests: 
 	dotnet test src/test/LetsShop.Basket.IntegrationTests/LetsShop.Basket.IntegrationTests.csproj
@@ -11,3 +12,5 @@ all-tests: unit-tests integration-tests
 	
 build:
 	dotnet build ./
+	
+build-test-run: all-tests run

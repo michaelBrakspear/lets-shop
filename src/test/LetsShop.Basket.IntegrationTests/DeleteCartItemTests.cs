@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using LetsShop.Basket.Domain.IntegrationTests;
+using LetsShop.Common;
 using LetsShop.Common.DTOs;
 using Xunit;
 
@@ -23,7 +24,7 @@ namespace LetsShop.Basket.IntegrationTests
             // arrange
             var cart = CartDto.NewCart();
             await _fixture.Client.CreateNewCartAsync(cart);
-            var request = TestHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, cart.Id, 
+            var request = HttpHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, cart.Id, 
                 Guid.NewGuid(), HttpMethod.Delete);
 
             // act
@@ -37,7 +38,7 @@ namespace LetsShop.Basket.IntegrationTests
         public async Task DELETE_CartItem_ReturnsNotFoundIfCartDoesNotExist()
         {
             // arrange
-            var request = TestHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, Guid.NewGuid(),
+            var request = HttpHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, Guid.NewGuid(),
                 Guid.NewGuid(), HttpMethod.Delete);
 
             // act
@@ -56,7 +57,7 @@ namespace LetsShop.Basket.IntegrationTests
             cart.Products.Add(product);
             await _fixture.Client.CreateNewCartAsync(cart);
 
-            var request = TestHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, cart.Id, product.Id, HttpMethod.Delete);
+            var request = HttpHelper.ConstructRequestWithIdAndItemId(_fixture.Client.BaseAddress, cart.Id, product.Id, HttpMethod.Delete);
 
             // act
             var response = await _fixture.Client.SendAsync(request);
