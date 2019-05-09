@@ -43,6 +43,8 @@ Currently there is only a cart controller - therefore the consumer can decide th
 # The Client 
 A simple library to use to interact with the API, see the LetsShop.Demo project for a guide.
 
+The easiest way to run the Demo is to run the command ```$ make run``` to launch the API. Set the LetsShop.Demo as the startup project and F5. 
+
 # Next Steps
 - Implement a product controller with a corresponding product repository to keep track of inventory, stock levels and pricing.
 - Logging - Use [Serilog](https://serilog.net/)
